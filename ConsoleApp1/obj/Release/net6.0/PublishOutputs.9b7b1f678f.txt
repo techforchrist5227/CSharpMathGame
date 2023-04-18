@@ -1,0 +1,5 @@
+C:\Users\BrettnLaura\Finished C# Projects\ConsoleApp1.exe
+C:\Users\BrettnLaura\Finished C# Projects\ConsoleApp1.dll
+C:\Users\BrettnLaura\Finished C# Projects\ConsoleApp1.deps.json
+C:\Users\BrettnLaura\Finished C# Projects\ConsoleApp1.runtimeconfig.json
+C:\Users\BrettnLaura\Finished C# Projects\ConsoleApp1.pdb
