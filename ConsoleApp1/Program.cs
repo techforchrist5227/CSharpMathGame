@@ -16,13 +16,36 @@ namespace ConsoleApp1
         public static void Main(string[] args)
         {
 
-            
+
             var Date = DateTime.UtcNow;
 
             Console.WriteLine($"Please type in your name : \n\n");
 
             string name = Console.ReadLine();
 
+            Console.WriteLine("How old are you?");
+
+            string age = Console.ReadLine();
+
+            Choice_Menu(Date, name);
+
+            Console.WriteLine("-------------------------------------\n\n");
+
+            
+
+            int ageToInt = int.Parse(age);
+
+
+
+
+
+
+
+
+        }
+
+        private static void Choice_Menu(DateTime Date, string name)
+        {
             Console.WriteLine($@"  Hello {name.ToUpper()} , welcome to the Math game!  Which game would you like to play?
                 A - Addition
                 S - Subtraction
@@ -36,118 +59,51 @@ namespace ConsoleApp1
                 ");
 
             string gameChoice = Console.ReadLine();
-            
+
             gameChoice.ToUpper().ToCharArray();
+
 
             Console.WriteLine("\n");
 
 
-
-
-
-
-
-            if (gameChoice.Trim() == "a" || gameChoice.Trim() == "A")
+            switch (gameChoice.Trim().ToLower())
             {
-                AdditionGame("You have chosen the Addition game!");
-            } 
-            else if(gameChoice.Trim() == "s" || gameChoice.Trim() == "S")
-            {
-                Subtraction();
-                
+                case "a":
+                    ProgramHelpers.AdditionGame("You have chosen the Addition game!");
+                    break;
+                case "s":
+                    ProgramHelpers.Subtraction();
+                    break;
+                case "m":
+                    ProgramHelpers.Multiplication();
+                    break;
+                case "d":
+                    ProgramHelpers.Division();
+                    break;
+                case "u":
+                    ProgramHelpers.RandomChoiceOption();
+                    break;
+                case "q":
+                    Console.WriteLine("Goodbye for now!");
+                    Environment.Exit(1);
+                    break;
+                default:
+                    Console.WriteLine("Invalid selection");
+                    Environment.Exit(1);
+                    break;
             }
-            else if (gameChoice.Trim() == "m" || gameChoice.Trim() == "M")
-            {
-                Multiplication();
-            }
-            else if (gameChoice.Trim() == "d" || gameChoice.Trim() == "D")
-            {
-                Division();
-            }
-            else if (gameChoice.Trim() == "u" || gameChoice.Trim() == "U")
-            {
-                RandomChoiceOption();
-            }
-            else if (gameChoice.Trim() =="q" || gameChoice.Trim() == "Q") 
-            {
-                Console.WriteLine("Goodbye for now!");
-                Environment.Exit(1);
-            } 
-            else
-            {
-                Console.WriteLine("Invalid selection!");
-                Environment.Exit(1);
-            }
-
-
-
-           
-
-            
-
-            Console.WriteLine("-------------------------------------\n\n");
-
-            Console.WriteLine("How old are you?");
-
-            string age = Console.ReadLine();
-
-            int ageToInt = int.Parse(age);
-
-
-            
-
-
-           
-            
-            
         }
-
-
-        public static void RandomChoiceOption()
-        {
-            Console.WriteLine("You have chosen the Random Mix!!!"); ;
-        }
-
-        public static void Division()
-        {
-            Console.WriteLine("You have chosen Division"); ;
-        }
-
-        public static void Multiplication()
-        {
-            Console.WriteLine("You have chosen Multiplication"); ;
-        }
-
-        public static void Subtraction()
-        {
-            Console.WriteLine("You have chosen Subtraction.");
-        }
-
-        public static void AdditionGame(string message)
-        {
-            Console.WriteLine(message);
-
-
-
-        }
-
-        
-
-
-
-       
-
     }
-        
-
-        
 
 
-        
 
 
-        
-        
 
 
-    }
+
+
+
+
+
+
+}
