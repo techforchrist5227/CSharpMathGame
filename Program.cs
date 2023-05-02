@@ -19,6 +19,8 @@ namespace ConsoleApp1
 
             var Date = DateTime.UtcNow;
 
+            
+
             Console.WriteLine($"Please type in your name : \n\n");
 
             string name = Console.ReadLine();
@@ -95,7 +97,7 @@ namespace ConsoleApp1
                 switch (gameChoice.Trim().ToLower())
                 {
                     case "a":
-                        ProgramHelpers.AdditionGame("You have chosen the Addition game!");
+                        ProgramHelpers.Addition("You have chosen the Addition game!");
                         break;
                     case "s":
                         ProgramHelpers.Subtraction("You have chosen the subtraction game");

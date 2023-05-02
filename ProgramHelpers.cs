@@ -2,11 +2,11 @@
 
 
 using static System.Formats.Asn1.AsnWriter;
-
+var games = new List<string>(); //global scope instead of local since it's outside a method.
 internal static class ProgramHelpers
 {
-
-    public static void AdditionGame(string message)
+    
+    public static void Addition(string message)
     {
         Console.WriteLine(message);
 
@@ -84,7 +84,7 @@ internal static class ProgramHelpers
             }
 
         }
-
+        games.Add($"{DateTime.Now}");
 
     }
 
@@ -161,7 +161,16 @@ internal static class ProgramHelpers
                 Console.WriteLine($@"Game over, Thanks for playing! Your final score is : {finalResult}");
             }
 
+            Console.WriteLine("Would you like to play again?");
 
+            string playAgain = Console.ReadLine();
+
+            if (playAgain == null || playAgain == "no" || playAgain == "n")
+            {
+                Console.WriteLine("Goodbye!");
+                Console.WriteLine($@"{score}");
+                Environment.Exit(1);
+            }
 
         }
     }
@@ -201,7 +210,10 @@ internal static class ProgramHelpers
             firstNumber = random.Next(1, 9);
             secondNumber = random.Next(1, 9);
             numIncorrGuesses = 0;
-            int score = 0;
+            int score = 0; 
+            
+            Console.Clear();
+
             Console.WriteLine($@" What is {firstNumber} * {secondNumber} = ?");
             string guess = Console.ReadLine();
 
@@ -334,7 +346,7 @@ internal static class ProgramHelpers
     public static void RandomChoiceOption(string message)
     {
 
-        Console.WriteLine(message);
+        
 
 
         // creating a "RANDOM" instance from the random c# class
@@ -346,97 +358,44 @@ internal static class ProgramHelpers
 
 
         /* two numbers that will be generated between 1 and 9 using the "random" variable and the RANDOM class from C# library */
-        int firstNumber;
-        int secondNumber;
+        int randomNumber = random.Next(1,5);
         int numTurns = 0;
         int numIncorrGuesses = 0;
         var score = 0;
 
 
+        // switch statement that will randomly choose a game.  Each game has been set to equal a number for each case. 
 
-
-
-
-
-        // while loop to keep the game going in a certain rate (set for 5 times)
-
-        for (int i = 0; i < 5; i++)
+        switch(randomNumber)
         {
-            firstNumber = random.Next(1, 9);
-            secondNumber = random.Next(1, 9);
-
-
-            Console.WriteLine($@" What is {firstNumber} + {secondNumber} = ?");
-            string guess = Console.ReadLine();
-
-            int guessToNum = int.Parse(guess);
-            if (guessToNum == firstNumber + secondNumber)
-            {
-                Console.WriteLine("You are right!");
-                score++;
-                Console.WriteLine("Press any key to continue.");
-                Console.ReadLine();
-            }
-            else
-            {
-                Console.WriteLine("Incorrect");
-                numIncorrGuesses++;
-                Console.WriteLine("Press any key to continue. ");
-                Console.ReadLine();
-            }
-            if (numIncorrGuesses >= 3)
-            {
-                int finalResult = score - numIncorrGuesses;
-                Console.WriteLine($"Game over, too many incorrect guesses. Score : {finalResult}");
-                Console.Beep();
+            case 1:
+                Addition(message);
+                break;
+            case 2:
+                Subtraction(message);
+                break;
+            case 3:
+                Multiplication(message);
+                break;
+            case 4:
+                Division(message);
+                break;
+            default:
+                Console.WriteLine("Invalid selection");
                 Environment.Exit(1);
-            }
-
-            if (i == 4)
-            {
-                int finalResult = score - numIncorrGuesses;
-                Console.WriteLine($@"Game over, Thanks for playing! Your final score is : {finalResult}");
-
-                Console.WriteLine("Tap any key to continue.");
-
-                Console.ReadLine();
-
-                Console.WriteLine("Would you like to play again?");
-
-                string playAgain = Console.ReadLine();
-
-
-
-            }
-
+                break;
         }
 
+        
+
+
+    }
+
 
     }
 
 
 
-    public static int[] GameRandomizer()
+    
 
-        // Create a separate method that will randomly generate a game between the different options. 
-
-    {
-        //create the "Random" instance
-        var Random = new Random();
-        //Randomly cycle through the 4 options
-        var randomCycle = Random.Next(1, 4);
-        
-        //Create an array so the 4 games can be different options to cycle through
-        var result = new int[4];
-        int numGuesses = 0;
-
-
-        result[0] = randomCycle;
-
-
-        
-        return result;
-        
-    }
-}
     
